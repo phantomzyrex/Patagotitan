@@ -1,0 +1,6 @@
+{
+  "name": "Patagotitan — Titan of the Floodplain Forests",
+  "description": "An interactive museum-grade paleontological portfolio and editorial experience exploring Patagotitan mayorum and its Early Cretaceous floodplain forest biome.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

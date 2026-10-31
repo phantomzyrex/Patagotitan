@@ -1,0 +1,226 @@
+@import "tailwindcss";
+
+:root {
+  --glow: #F6B27A;
+  --clay: #D07A45;
+  --sage: #8E9A6B;
+  --moss: #5E8A58;
+  --conifer: #2E6B55;
+  --deep: #123D33;
+  --floor: #08211C;
+  --mud: #3A2A1C;
+  --umber: #14100A;
+  --mist: #DDEBDD;
+  --ash: #CFC6BA;
+  --bone: #FFF6EA;
+  --rim: #FFD3A1;
+
+  --font-display: 'Marcellus', 'Cinzel', 'Optima', Georgia, serif;
+  --font-body: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-body);
+    background-color: var(--umber);
+    color: var(--bone);
+    scroll-behavior: auto;
+  }
+
+  body {
+    background-color: var(--floor);
+    color: var(--bone);
+    overflow-x: hidden;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* Hero Radial Biome Gradient: Warm Apricot -> Terracotta -> Sage -> Moss -> Conifer -> Deep -> Floor */
+.hero-biome-gradient {
+  background:
+    radial-gradient(ellipse 125% 95% at 50% 50%, transparent 52%, rgba(8, 33, 28, 0.72) 86%, rgba(20, 16, 10, 0.94) 100%),
+    radial-gradient(
+      ellipse 115% 105% at 50% -12%,
+      var(--glow) 0%,
+      var(--clay) 12%,
+      var(--sage) 28%,
+      var(--moss) 44%,
+      var(--conifer) 62%,
+      var(--deep) 82%,
+      var(--floor) 100%
+    );
+}
+
+/* Outlined Section Numbers (01, 02...) */
+.section-number-outline {
+  font-family: var(--font-display);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 246, 234, 0.4);
+  user-select: none;
+}
+
+/* Creature Bottom Fade Mask */
+.creature-mask-fade {
+  -webkit-mask-image: linear-gradient(to bottom, #000 72%, rgba(0, 0, 0, 0.55) 89%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 72%, rgba(0, 0, 0, 0.55) 89%, transparent 100%);
+}
+
+/* Creature Reflection Mask */
+.creature-reflection-mask {
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.12) 45%, transparent 85%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.12) 45%, transparent 85%);
+}
+
+/* Sunbeam Sway Animations */
+@keyframes sunbeamSwaySlow {
+  0%, 100% {
+    transform: rotate(-14deg) translateX(-12px) scaleY(1);
+    opacity: 0.22;
+  }
+  50% {
+    transform: rotate(-10deg) translateX(18px) scaleY(1.05);
+    opacity: 0.15;
+  }
+}
+
+@keyframes sunbeamSwayReverse {
+  0%, 100% {
+    transform: rotate(13deg) translateX(10px) scaleY(1);
+    opacity: 0.18;
+  }
+  50% {
+    transform: rotate(9deg) translateX(-16px) scaleY(1.04);
+    opacity: 0.25;
+  }
+}
+
+.animate-sunbeam-1 {
+  animation: sunbeamSwaySlow 16s ease-in-out infinite;
+}
+.animate-sunbeam-2 {
+  animation: sunbeamSwayReverse 21s ease-in-out infinite;
+}
+.animate-sunbeam-3 {
+  animation: sunbeamSwaySlow 19s ease-in-out infinite 3s;
+}
+
+/* Heavy Giant Idle Sway (8-10s sine loop, +-5px vertical, +-0.4deg rotation) */
+@keyframes titanIdleSway {
+  0%, 100% {
+    transform: translateY(-4px) rotate(-0.35deg);
+  }
+  50% {
+    transform: translateY(5px) rotate(0.35deg);
+  }
+}
+
+.animate-titan-idle {
+  animation: titanIdleSway 9.2s ease-in-out infinite;
+  transform-origin: 50% 85%;
+}
+
+/* Subtle Ground Tremor */
+@keyframes groundTremor {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-1.5px, 1.5px); }
+  40% { transform: translate(1.5px, -1px); }
+  60% { transform: translate(-1px, 1px); }
+  80% { transform: translate(1px, -0.5px); }
+}
+
+.animate-tremor {
+  animation: groundTremor 0.38s ease-in-out 2;
+}
+
+/* Water Ripple Expansion */
+@keyframes waterRipple {
+  0% {
+    transform: scale(0.82);
+    opacity: 0.55;
+  }
+  70% {
+    opacity: 0.22;
+  }
+  100% {
+    transform: scale(1.38);
+    opacity: 0;
+  }
+}
+
+.animate-water-ripple-1 {
+  animation: waterRipple 5.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.animate-water-ripple-2 {
+  animation: waterRipple 5.5s cubic-bezier(0.16, 1, 0.3, 1) infinite 2.6s;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+/* Mist Drift */
+@keyframes mistDriftRight {
+  0%, 100% {
+    transform: translateX(-4%) scaleX(1.05);
+  }
+  50% {
+    transform: translateX(4%) scaleX(1.1);
+  }
+}
+
+@keyframes mistDriftLeft {
+  0%, 100% {
+    transform: translateX(4%) scaleX(1.08);
+  }
+  50% {
+    transform: translateX(-4%) scaleX(1.02);
+  }
+}
+
+.animate-mist-right {
+  animation: mistDriftRight 26s ease-in-out infinite;
+}
+
+.animate-mist-left {
+  animation: mistDriftLeft 32s ease-in-out infinite;
+}
+
+/* 3D Flip Card Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-sunbeam-1,
+  .animate-sunbeam-2,
+  .animate-sunbeam-3,
+  .animate-titan-idle,
+  .animate-tremor,
+  .animate-water-ripple-1,
+  .animate-water-ripple-2,
+  .animate-mist-right,
+  .animate-mist-left {
+    animation: none !important;
+    transform: none !important;
+  }
+}
